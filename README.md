@@ -7,12 +7,9 @@ O programa analisa ciclos de telemetria da missão, calcula riscos, classifica o
 ## Missão
 
 **Nome da missão:** Artemis Deep Scan  
-**Equipe:** Equipe 7
 
 ## Integrantes
 
-- Davi Teodoro Novais - RM: 571022
-- Lourenco Borges da Silva - RM: 569515
 - Caio César Portela França - RM: 573127
 - Gustavo Curis de Francisco - RM: 569704
 - Tiago Pimentel Muniz - RM: 574148
