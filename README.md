@@ -1,127 +1,347 @@
-# Mission Control AI — Artemis Deep Scan
+# Mission Control IA — Módulo de Energia Sustentável
 
-Sistema em Python para simular o monitoramento básico de uma missão espacial experimental.
+Sistema de monitoramento energético para uma missão espacial experimental, com foco em geração solar simulada, consumo dos módulos, saldo energético, autonomia da bateria e tomada de decisão operacional.
 
-O programa analisa ciclos de telemetria da missão, calcula riscos, classifica o estado operacional e gera um relatório final no terminal.
+---
 
-## Missão
+## Informações da entrega
 
 **Nome da missão:** Artemis Deep Scan  
 
+**Vídeo não listado no YouTube:** 
+
+---
+
 ## Integrantes
 
-- Caio César Portela França - RM: 573127
-- Gustavo Curis de Francisco - RM: 569704
-- Tiago Pimentel Muniz - RM: 574148
+- Caio César Portela França — RM: 573127
+- Gustavo Curis de Francisco — RM: 569704
+- Tiago Pimentel Muniz — RM: 574148
+
+---
+
+## Visão geral
+
+O **Mission Control IA** é uma central de monitoramento de missão espacial experimental.
+
+O sistema acompanha dados simulados da missão, interpreta condições operacionais, gera alertas e apresenta recomendações de tomada de decisão.
+
+Nesta entrega, o foco principal está no módulo **Energia Sustentável**, responsável por analisar geração solar, consumo energético, autonomia da bateria e priorização de cargas operacionais.
+
+---
 
 ## Objetivo
 
-Monitorar uma missão simulada com base em cinco variáveis principais:
+Monitorar o sistema energético de uma missão espacial experimental, analisando:
 
-- Temperatura interna
-- Comunicação com a base
-- Sistema de energia
-- Suporte de oxigênio
-- Estabilidade operacional
+- geração solar simulada;
+- consumo total dos módulos;
+- consumo por carga operacional;
+- saldo energético;
+- autonomia estimada da bateria;
+- modo energético da missão;
+- priorização de cargas essenciais e não essenciais;
+- alertas em situações de atenção ou emergência.
 
-A partir desses dados, o sistema identifica alertas, calcula pontuação de risco, classifica cada ciclo e apresenta recomendações automáticas.
+A proposta é apoiar decisões operacionais durante a missão, indicando quando a energia disponível é suficiente e quando é necessário reduzir cargas para preservar sistemas críticos.
 
-## Estrutura dos dados
+---
 
-A matriz principal do sistema é `dados_missao`.
+## Problema abordado
 
-Cada linha representa um ciclo da missão.
+Missões espaciais dependem de energia limitada e precisam equilibrar geração, armazenamento e consumo.
 
-Cada ciclo segue exatamente esta ordem:
+Quando o consumo dos módulos ultrapassa a geração disponível, a missão pode perder autonomia e comprometer sistemas essenciais, como:
 
-```python
-[temperatura, comunicacao, bateria, oxigenio, estabilidade]
-```
+- suporte de oxigênio;
+- comunicação com a base;
+- estabilidade operacional;
+- controle térmico.
 
-Exemplo:
+O módulo de Energia Sustentável identifica esses riscos e recomenda ações básicas de conservação energética.
 
-```python
-[22, 95, 91, 98, 93]
-```
+---
 
-Significado:
+## Solução desenvolvida
 
-- Temperatura: 22 °C
-- Comunicação: 95%
-- Bateria: 91%
-- Oxigênio: 98%
-- Estabilidade: 93%
+A solução analisa dados simulados da missão e calcula indicadores energéticos a cada atualização.
 
-## Regras de classificação
+O sistema possui duas formas de visualização:
 
-Cada variável é classificada como:
+1. **Sistema integrado com interface gráfica**  
+   Demonstra o monitoramento completo da missão, com destaque para a aba **Energia Sustentável**.
 
-- `NORMAL`
-- `ATENÇÃO`
-- `CRÍTICO`
+2. **Módulo individual em terminal**  
+   Executa a lógica energética em formato textual, permitindo validar o módulo separadamente.
 
-Pontuação:
+---
 
-| Classificação | Pontos |
-|---|---:|
-| NORMAL | 0 |
-| ATENÇÃO | 1 |
-| CRÍTICO | 2 |
+## Principais funcionalidades
 
-Como cada ciclo possui 5 variáveis, a pontuação máxima por ciclo é 10.
+- Monitoramento da bateria da missão.
+- Cálculo de geração solar simulada.
+- Cálculo do consumo total dos módulos.
+- Cálculo de saldo energético.
+- Estimativa de autonomia da bateria.
+- Classificação do estado energético.
+- Definição automática do modo energético.
+- Priorização de cargas essenciais.
+- Recomendação de redução de cargas secundárias.
+- Alertas em cenários de atenção ou emergência.
+- Visualização dos dados em cards, gráficos, tabelas e relatório.
 
-## Classificação do ciclo
+---
 
-| Pontuação | Classificação |
-|---:|---|
-| 0 a 2 | MISSÃO ESTÁVEL |
-| 3 a 5 | MISSÃO EM ATENÇÃO |
-| 6 a 10 | MISSÃO CRÍTICA |
+## Conceitos aplicados
 
-## Funcionalidades
+O módulo aplica conceitos relacionados a:
 
-O sistema realiza:
+- energia armazenada em bateria;
+- potência elétrica em watts;
+- geração solar simulada;
+- consumo energético por módulo;
+- saldo energético;
+- autonomia operacional;
+- eficiência energética;
+- sustentabilidade em sistemas espaciais;
+- tomada de decisão baseada em dados.
 
-- análise de temperatura;
-- análise de comunicação;
-- análise de bateria;
-- análise de oxigênio;
-- análise de estabilidade;
-- cálculo de risco por ciclo;
-- classificação automática de cada ciclo;
-- geração de recomendações;
-- análise da tendência da missão;
-- identificação da área mais afetada;
-- relatório final no terminal.
+---
 
-## Como executar
+## Indicadores monitorados
 
-No terminal, rode:
+| Indicador | Descrição |
+|---|---|
+| Bateria atual | Percentual de energia armazenada na missão |
+| Geração solar | Energia gerada por fonte renovável simulada |
+| Consumo total | Soma do consumo dos módulos operacionais |
+| Saldo energético | Diferença entre geração solar e consumo |
+| Autonomia | Tempo estimado de operação com a bateria disponível |
+| Modo energético | Estado operacional definido pelo sistema |
+| Painel de cargas | Indicação de quais cargas manter ou reduzir |
 
-```bash
-python mission_control.py
-```
+---
 
-## Arquivos do projeto
+## Regras de decisão energética
+
+O sistema classifica o estado energético com base na bateria e no saldo energético.
+
+### Estado Normal
+
+Condição geral:
+
+- bateria em nível seguro;
+- saldo energético positivo ou estável.
+
+Ação recomendada:
+
+- manter operação nominal;
+- armazenar excedente solar;
+- continuar monitoramento preventivo.
+
+### Estado de Atenção
+
+Condição geral:
+
+- bateria abaixo do ideal; ou
+- consumo maior que geração.
+
+Ação recomendada:
+
+- reduzir consumo secundário;
+- monitorar autonomia;
+- evitar expansão de cargas experimentais.
+
+### Estado Crítico
+
+Condição geral:
+
+- bateria em nível crítico;
+- saldo energético negativo.
+
+Ação recomendada:
+
+- reduzir cargas não essenciais;
+- preservar suporte de oxigênio, comunicação e estabilidade;
+- direcionar energia disponível para recuperação da bateria.
+
+---
+
+## Priorização de cargas
+
+O sistema separa as cargas da missão em essenciais e não essenciais.
+
+| Carga | Prioridade | Decisão esperada |
+|---|---|---|
+| Suporte de oxigênio | Essencial | Manter ativa |
+| Comunicação com a base | Essencial | Manter ativa |
+| Estabilidade operacional | Essencial | Manter ativa ou reduzir parcialmente em caso crítico |
+| Controle térmico | Essencial | Manter ativa |
+| Pesquisa / carga experimental | Não essencial | Reduzir em atenção ou emergência |
+
+Essa lógica permite preservar os sistemas mais importantes antes de manter cargas secundárias.
+
+---
+
+## Uso de Inteligência Artificial
+
+O sistema utiliza IA como camada de apoio à interpretação operacional da missão.
+
+O modelo configurado é:
 
 ```text
-mission-control-ai/
-├── README.md
-└── mission_control.py
+llama3.2:1b
 ```
 
-## Saída esperada
+Executado localmente via:
 
-O programa exibe no terminal:
+```text
+Ollama
+```
 
-- dados analisados por ciclo;
-- status de cada variável;
-- pontuação de risco;
-- classificação do ciclo;
-- recomendação automática;
-- relatório final da missão.
+A IA pode ser usada para:
+
+- interpretar o estado atual da missão;
+- analisar contexto de telemetria;
+- apoiar recomendações operacionais;
+- complementar o relatório final;
+- explicar riscos e prioridades em linguagem natural.
+
+A IA não substitui os cálculos determinísticos do sistema. Os cálculos de risco, energia, saldo, autonomia e alertas continuam sendo feitos pelo Python.
+
+---
+
+## Como executar o sistema integrado
+
+Na raiz do projeto, execute:
+
+```bash
+python main.py
+```
+
+Depois:
+
+1. Configure a missão na tela inicial.
+2. Clique em **Iniciar missão**.
+3. Acesse a aba **Energia Sustentável**.
+4. Acompanhe geração solar, consumo, saldo energético, autonomia e decisão energética.
+
+---
+
+## Como executar o módulo individual em terminal
+
+Execute:
+
+```bash
+python energy_monitor.py
+```
+
+Esse arquivo apresenta no terminal:
+
+- análise energética por ciclo;
+- geração solar;
+- consumo total;
+- saldo energético;
+- autonomia;
+- painel de cargas;
+- recomendações;
+- relatório energético consolidado.
+
+---
+
+## Módulo de energia no sistema integrado
+
+No sistema integrado, o motor energético é responsável por calcular:
+
+- consumo total;
+- saldo energético;
+- autonomia;
+- status energético;
+- modo energético;
+- recomendações;
+- painel de cargas.
+
+A interface gráfica exibe esses dados na aba **Energia Sustentável**, permitindo acompanhar a evolução da missão por meio de cards, gráficos e tabelas.
+
+---
+
+## Visualização dos dados
+
+A interface gráfica apresenta:
+
+- cards com indicadores principais;
+- gráficos de geração solar;
+- gráfico de consumo total;
+- gráfico de autonomia;
+- tabela de cargas;
+- painel de decisão energética;
+- alertas e recomendações.
+
+Essa visualização facilita a leitura rápida do estado energético da missão.
+
+---
+
+## Relação com sustentabilidade
+
+A solução utiliza geração solar simulada como fonte renovável principal da missão.
+
+O sistema busca preservar energia e aumentar a eficiência operacional por meio de:
+
+- monitoramento do saldo energético;
+- redução de cargas não essenciais;
+- priorização de sistemas críticos;
+- uso estratégico da energia solar disponível;
+- recomendações de conservação energética.
+
+---
+
+## Tecnologias utilizadas
+
+- Python
+- Tkinter
+- Ollama
+- Llama 3.2 1B
+- Estruturas condicionais
+- Listas e dicionários
+- Funções modulares
+- Simulação de dados operacionais
+- Lógica de tomada de decisão
+
+---
+
+## Demonstração em vídeo
+
+O vídeo de demonstração apresenta:
+
+1. configuração da missão;
+2. início da simulação;
+3. visão geral do cockpit;
+4. foco na aba **Energia Sustentável**;
+5. análise de geração solar, consumo e saldo energético;
+6. painel de cargas;
+7. decisão energética recomendada pelo sistema;
+8. uso da IA como apoio à análise operacional;
+9. relatório/resumo da missão.
+
+A demonstração evidencia como o sistema transforma dados simulados em apoio à decisão energética.
+
+---
+
+## Dados simulados
+
+Os dados utilizados são simulados e representam uma missão espacial experimental.
+
+Eles foram criados para demonstrar cenários como:
+
+- operação nominal;
+- redução de geração solar;
+- aumento de consumo;
+- déficit energético;
+- queda de autonomia;
+- necessidade de conservação de energia.
+
+---
 
 ## Observação
 
-Os dados utilizados são simulados e servem para representar o funcionamento de um sistema básico de monitoramento de missão espacial.
-
+O Mission Control IA é uma solução de simulação e demonstração. Os dados não representam uma missão real, mas foram estruturados para ilustrar como um sistema computacional pode apoiar o monitoramento energético de uma operação espacial experimental.
