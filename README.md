@@ -94,22 +94,6 @@ O sistema realiza:
 - identificação da área mais afetada;
 - relatório final no terminal.
 
-## Como executar
-
-No terminal, rode:
-
-```bash
-python mission_control.py
-```
-
-## Arquivos do projeto
-
-```text
-mission-control-ai/
-├── README.md
-└── mission_control.py
-```
-
 ## Saída esperada
 
 O programa exibe no terminal:
